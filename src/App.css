@@ -1,0 +1,408 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+
+  /* ✅ FIXED TEAL BACKGROUND (NO ANIMATION) */
+  background: linear-gradient(135deg, #04363a 0%, #05595b 50%, #0a6b6c 100%);
+
+background-size: 400% 400%;
+animation: gradientShift 15s ease infinite;
+}
+
+
+
+/* Navbar */
+.navWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.navBar {
+  display: flex;
+  gap: 18px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05); /* Slightly darker for contrast */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navBtn {
+  padding: 10px 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 14px;
+  font-size: 16px;
+  color: rgba(246, 236, 236, 0.7);
+  background: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.navBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.navBtn:hover::before {
+  left: 100%;
+}
+
+.navBtn:hover {
+  color: #19f6d2; /* UPDATED: Cyan hover */
+  transform: translateY(-2px);
+}
+
+.navBtn.active {
+  color: #19f6d2;
+  background: rgba(25, 246, 210, 0.15);
+  box-shadow: 0 0 30px rgba(25, 246, 210, 0.45);
+  transform: translateY(-2px);
+}
+.navBtn:focus-visible {
+  outline: 2px solid rgba(100, 255, 218, 0.4);
+  outline-offset: 3px;
+}
+
+
+
+/* Main Page Card */
+.centerCard {
+  margin-top: 100px;
+  width: 90%;
+  max-width: 950px;
+  padding: 70px 40px;
+  text-align: center;
+  border-radius: 25px;
+  background: rgba(10, 25, 47, 0.4); /* UPDATED: Deeper navy tint */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+}
+
+.centerCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  margin-top: 20px;
+  font-size: 18px;
+  color: rgba(204, 214, 246, 0.7); /* UPDATED: Cool gray-blue */
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Page Card */
+.bigCard {
+  margin-top: 70px;
+  width: 90%;
+  max-width: 950px;
+  padding: 50px;
+  border-radius: 25px;
+  background: rgba(10, 25, 47, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+}
+
+.bigCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.pageTitle {
+  font-size: 38px;
+  font-weight: 600;
+  color: #19f6d2; /* UPDATED: Main heading color */
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* Search */
+.searchRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 380px;
+  padding: 16px 18px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.searchInput::placeholder {
+  color: rgba(204, 214, 246, 0.4);
+}
+
+.searchInput:focus {
+  border-color: #19f6d2; /* UPDATED: Cyan focus */
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.searchBtn {
+  padding: 14px 40px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: #021b1f;
+
+  background: linear-gradient(45deg, #19f6d2, #00c9a7);
+  box-shadow: 0 5px 18px rgba(25, 246, 210, 0.35);
+
+  transition: all 0.3s ease;
+}
+
+
+
+.searchBtn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(100, 255, 218, 0.5);
+}
+
+/* Error */
+.errorText {
+  margin-top: 18px;
+  text-align: center;
+  color: #ff6b6b; /* UPDATED: Soft red error */
+  font-size: 14px;
+}
+
+/* Result Card */
+.weatherResultCard {
+  margin-top: 28px;
+  width: 100%;
+  border-radius: 18px;
+  padding: 25px 30px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: all 0.3s ease;
+}
+
+.placeText {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ccd6f6;
+  margin-bottom: 18px;
+}
+
+.tempText {
+  font-size: 40px;
+  font-weight: 800;
+  color: #19f6d2;
+}
+
+/* Gender Card */
+.genderCard {
+  margin-top: 28px;
+  width: 100%;
+  border-radius: 18px;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+}
+
+.genderCountry {
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.genderSource {
+  color: #8892b0;
+}
+
+.genderTotal {
+  color: #19f6d2;
+}
+
+/* Education Cards Grid */
+.eduCard {
+  padding: 25px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  backdrop-filter: blur(15px);
+}
+
+.eduTitle {
+  color: #ccd6f6;
+}
+
+.eduType {
+  color: #19f6d2; /* UPDATED: Highlight color */
+}
+
+/* =========================
+   ✅ FOOD OUTPUT LIKE YOUR DESIGN
+========================= */
+
+.foodBigCard {
+  margin-top: 28px;
+  width: 100%;
+  border-radius: 18px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+}
+
+/* top section = image left + content right */
+.foodTop {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* image box */
+.foodImgWrap {
+  width: 260px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.foodImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* right content */
+.foodInfo {
+  flex: 1;
+  min-width: 250px;
+}
+
+.foodTitle {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: #64ffda;
+}
+
+.foodMeta {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: rgba(204, 214, 246, 0.7);
+}
+
+.foodHeading {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+/* ingredients in 2 columns */
+.foodIngredientsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 10px 35px;
+}
+
+.foodIngredient {
+  font-size: 14px;
+  color: rgba(204, 214, 246, 0.75);
+}
+
+/* instructions section below */
+.foodBottom {
+  margin-top: 25px;
+}
+
+.foodInstructions {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(204, 214, 246, 0.7);
+}
+
+/* ✅ Responsive for mobile */
+@media (max-width: 700px) {
+  .foodTop {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .foodImgWrap {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .foodTitle {
+    text-align: center;
+  }
+
+  .foodMeta {
+    text-align: center;
+  }
+
+  .foodIngredientsGrid {
+    grid-template-columns: 1fr;
+  }
+}
